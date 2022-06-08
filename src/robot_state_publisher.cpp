@@ -132,7 +132,7 @@ RobotStatePublisher::RobotStatePublisher(const rclcpp::NodeOptions & options)
   description_pub_ = this->create_publisher<std_msgs::msg::String>(
     "robot_description",
     // Transient local is similar to latching in ROS 1.
-    rclcpp::QoS(1).transient_local());
+    rmw_qos_durability_policy_t::RMW_QOS_POLICY_DURABILITY_VOLATILE);
 
   setupURDF(urdf_xml);
 
